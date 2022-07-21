@@ -6,18 +6,25 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:migrate": "prisma migrate dev --name lia-dev",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "prisma db seed",
+    "prisma:reset": "prisma migrate reset -f",
+    "prisma:studio": "prisma studio",
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:push": "prisma db push"
   },
   "dependencies": {
-    "next": "12.2.2",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
     "@prisma/client": "^4.1.0",
     "apollo-server-core": "^3.10.0",
     "apollo-server-micro": "^3.10.0",
     "axios": "^0.27.2",
     "graphql": "^16.5.0",
-    "micro": "^9.4.0"
+    "micro": "^9.4.0",
+    "next": "12.2.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
@@ -25,7 +32,7 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
-    "typescript": "4.7.4",
-    "prisma": "^4.1.0"
+    "prisma": "^4.1.0",
+    "typescript": "4.7.4"
   }
 }
