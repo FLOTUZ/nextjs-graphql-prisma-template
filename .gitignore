@@ -34,3 +34,7 @@ package-lock.json
 
 # typescript
 *.tsbuildinfo
+
+# prisma
+*.db
+*.db-journal
