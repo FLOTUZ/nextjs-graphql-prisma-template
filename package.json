@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma:migrate": "prisma migrate dev --name lia-dev",
+    "prisma:migrate": "prisma migrate dev --name db-dev",
     "prisma:generate": "prisma generate",
     "prisma:seed": "prisma db seed",
     "prisma:reset": "prisma migrate reset -f",

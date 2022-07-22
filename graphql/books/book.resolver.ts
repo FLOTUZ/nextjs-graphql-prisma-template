@@ -1,11 +1,61 @@
-import { books } from "../data";
-import { Resolver, Query } from "type-graphql";
-import { Book } from "./book.entity";
+import { PrismaClient } from "@prisma/client";
+import { Resolver, Query, Mutation, Arg, Subscription } from "type-graphql";
+import { BookEntity } from "./book.entity";
 
-@Resolver(() => Book)
+@Resolver(() => BookEntity)
 export class BookResolver {
-  @Query(() => [Book])
-  async getBooks(): Promise<Book[]> {
-    return books;
+  constructor(private readonly prisma: PrismaClient) {
+    this.prisma = new PrismaClient();
+  }
+  @Query(() => [BookEntity])
+  async allBooks() {
+    return await this.prisma.book.findMany();
+  }
+
+  @Query(() => BookEntity, { nullable: true })
+  async oneBook(@Arg("id") id: number): Promise<BookEntity | null> {
+    return await this.prisma.book.findUnique({
+      where: {
+        id,
+      },
+    });
+  }
+
+  @Mutation(() => BookEntity)
+  async createBook(@Arg("name") name: string): Promise<BookEntity> {
+    return await this.prisma.book.create({
+      data: {
+        name,
+      },
+    });
+  }
+
+  @Mutation(() => BookEntity)
+  async updateBook(
+    @Arg("id") id: number,
+    @Arg("name") name: string
+  ): Promise<BookEntity> {
+    return await this.prisma.book.update({
+      where: {
+        id,
+      },
+      data: {
+        name,
+      },
+    });
+  }
+
+  @Mutation(() => Boolean)
+  async deleteBook(@Arg("id") id: number): Promise<boolean> {
+    try {
+      await this.prisma.book.delete({
+        where: {
+          id,
+        },
+      });
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }

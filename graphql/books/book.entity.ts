@@ -1,12 +1,13 @@
-import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectType, Field } from "type-graphql";
+import { Book } from "@prisma/client";
 
 @ObjectType()
-export class Book {
-  @Field(() => ID)
+export class BookEntity implements Book {
+  @Field(() => Number)
   id!: number;
 
   @Field(() => String, {
     nullable: true,
   })
-  name?: string | null;
+  name!: string | null;
 }
