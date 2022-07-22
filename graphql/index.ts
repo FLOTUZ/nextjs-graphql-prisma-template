@@ -1,12 +1,15 @@
 import { ApolloServer } from "apollo-server-micro";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
-import { BookResolver } from "./resolvers/book.resolver";
-import { graphqlmodel } from "./schemas/schema";
+import { buildSchema } from "type-graphql";
+import { BookResolver } from "./books/book.resolver";
+
+const schema = await buildSchema({
+  resolvers: [BookResolver],
+});
 
 export const apolloServer = new ApolloServer({
-  typeDefs: graphqlmodel,
-  resolvers: [BookResolver],
+  schema,
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 

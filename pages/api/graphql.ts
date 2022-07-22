@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { startServer, apolloServer } from "../../graphql/index";
 
