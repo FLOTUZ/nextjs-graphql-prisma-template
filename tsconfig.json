@@ -14,11 +14,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
-      "@/common/*": ["./components/common/*"],
-      "@/views/*": ["./components/views/*"],
-      "@/forms/*": ["./components/forms/*"],
-      "@/layouts/*": ["./components/layouts/*"]
+      "@/common/*": ["components/common/*"],
+      "@/views/*": ["components/views/*"],
+      "@/forms/*": ["components/forms/*"],
+      "@/layouts/*": ["components/layouts/*"]
     },
     //GraphQL
     "emitDecoratorMetadata": true,
