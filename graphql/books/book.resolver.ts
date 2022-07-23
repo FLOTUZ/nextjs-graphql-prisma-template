@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { Resolver, Query, Mutation, Arg, Subscription } from "type-graphql";
+import { Book } from "graphql/validators/models";
+import { Resolver, Query, Mutation, Arg } from "type-graphql";
 import { BookEntity } from "./book.entity";
 
 @Resolver(() => BookEntity)

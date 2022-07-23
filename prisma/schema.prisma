@@ -2,6 +2,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator class_validator {
+  provider = "prisma-class-validator-generator"
+  output = "../graphql/validators"
+}
+
 datasource db {
   // provider = "postgresql"
   // url      = env("DATABASE_URL")
@@ -10,6 +15,6 @@ datasource db {
 }
 
 model Book {
-  id   Int    @id @default(autoincrement())
+  id   Int     @id @default(autoincrement())
   name String? @unique
 }
