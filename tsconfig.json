@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "Es5",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,7 +20,8 @@
       "@/views/*": ["components/views/*"],
       "@/forms/*": ["components/forms/*"],
       "@/layouts/*": ["components/layouts/*"]
-    }
+    },
+    "experimentalDecorators": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
