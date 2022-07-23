@@ -1,62 +1,44 @@
-import { PrismaClient } from "@prisma/client";
-import { Book } from "graphql/validators/models";
-import { Resolver, Query, Mutation, Arg } from "type-graphql";
-import { BookEntity } from "./book.entity";
+import { Book, PrismaClient } from "@prisma/client";
 
-@Resolver(() => BookEntity)
-export class BookResolver {
-  constructor(private readonly prisma: PrismaClient) {
-    this.prisma = new PrismaClient();
-  }
-  @Query(() => [BookEntity])
-  async allBooks() {
-    return await this.prisma.book.findMany();
-  }
+const prisma = new PrismaClient();
 
-  @Query(() => BookEntity, { nullable: true })
-  async oneBook(@Arg("id") id: number): Promise<BookEntity | null> {
-    return await this.prisma.book.findUnique({
-      where: {
-        id,
-      },
-    });
-  }
-
-  @Mutation(() => BookEntity)
-  async createBook(@Arg("name") name: string): Promise<BookEntity> {
-    return await this.prisma.book.create({
-      data: {
-        name,
-      },
-    });
-  }
-
-  @Mutation(() => BookEntity)
-  async updateBook(
-    @Arg("id") id: number,
-    @Arg("name") name: string
-  ): Promise<BookEntity> {
-    return await this.prisma.book.update({
-      where: {
-        id,
-      },
-      data: {
-        name,
-      },
-    });
-  }
-
-  @Mutation(() => Boolean)
-  async deleteBook(@Arg("id") id: number): Promise<boolean> {
-    try {
-      await this.prisma.book.delete({
+export const BookResolver = {
+  Query: {
+    allBooks: () => {
+      return prisma.book.findMany();
+    },
+    bookById: (_: any, { id }: Book) => {
+      return prisma.book.findUnique({
         where: {
           id,
         },
       });
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-}
+    },
+  },
+
+  Mutation: {
+    createBook: async (_: any, { ...data }: Book) => {
+      const book = await prisma.book.create({
+        data,
+      });
+      return book;
+    },
+
+    updateBook: async (_: any, { id, ...data }: Book) => {
+      const book = await prisma.book.update({
+        where: { id },
+        data,
+      });
+
+      return book;
+    },
+
+    deleteBook: async (_: any, { id }: Book) => {
+      const book = await prisma.book.delete({
+        where: { id },
+      });
+
+      return book;
+    },
+  },
+};

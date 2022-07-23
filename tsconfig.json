@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES2018",
-    "lib": ["dom", "dom.iterable", "esnext", "esnext.asynciterable"],
+    "target": "Es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,10 +20,7 @@
       "@/views/*": ["components/views/*"],
       "@/forms/*": ["components/forms/*"],
       "@/layouts/*": ["components/layouts/*"]
-    },
-    //GraphQL
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
