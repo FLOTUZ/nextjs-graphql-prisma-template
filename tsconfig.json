@@ -19,7 +19,8 @@
       "@/common/*": ["components/common/*"],
       "@/views/*": ["components/views/*"],
       "@/forms/*": ["components/forms/*"],
-      "@/layouts/*": ["components/layouts/*"]
+      "@/layouts/*": ["components/layouts/*"],
+      "@services": ["services/index"],
     },
     "experimentalDecorators": true
   },

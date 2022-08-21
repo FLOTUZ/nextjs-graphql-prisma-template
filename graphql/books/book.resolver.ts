@@ -1,11 +1,12 @@
-import { Book, PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { Pagination, prisma } from "@services";
+import { Book } from "@prisma/client";
 
 export const BookResolver = {
   Query: {
-    allBooks: () => {
-      return prisma.book.findMany();
+    allBooks: (_: any, pagination: Pagination) => {
+      return prisma.book.findMany({
+        ...pagination,
+      });
     },
     bookById: (_: any, { id }: Book) => {
       return prisma.book.findUnique({

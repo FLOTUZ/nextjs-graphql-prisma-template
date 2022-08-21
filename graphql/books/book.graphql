@@ -1,10 +1,10 @@
 type Book {
   id: Int!
-  name: String
+  name: String!
 }
 
 type Query {
-  allBooks: [Book!]!
+  allBooks(take: Int, skip: Int): [Book!]!
   bookById(id: Int!): Book
 }
 
