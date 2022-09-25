@@ -38,4 +38,3 @@ package-lock.json
 # prisma
 *.db
 *.db-journal
-/graphql/validators
