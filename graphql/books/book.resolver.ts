@@ -1,9 +1,10 @@
-import { Pagination, prisma } from "@services";
+import { Args } from "graphql/models";
+import { prisma } from "@services";
 import { Book } from "@prisma/client";
 
 export const BookResolver = {
   Query: {
-    allBooks: (_: any, pagination: Pagination) => {
+    allBooks: (_: any, { pagination }: Args) => {
       return prisma.book.findMany({
         ...pagination,
       });

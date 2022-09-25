@@ -1,10 +1,12 @@
+# import Pagination from '../common/inputs.graphql'
+
 type Book {
   id: Int!
   name: String!
 }
 
 type Query {
-  allBooks(take: Int, skip: Int): [Book!]!
+  allBooks(pagination: Pagination): [Book]
   bookById(id: Int!): Book
 }
 

@@ -20,6 +20,7 @@
       "@/views/*": ["components/views/*"],
       "@/forms/*": ["components/forms/*"],
       "@/layouts/*": ["components/layouts/*"],
+      "@models": ["graphql/models"],
       "@services": ["services/index"],
     },
     "experimentalDecorators": true
