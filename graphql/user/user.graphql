@@ -2,16 +2,20 @@
 # import DateTime from '../common/scalars.graphql'
 
 input CreateUserInput {
-  name: String!
+  username: String!
   email: String!
   password: String!
+  roleId: Int
 }
 
 type User {
   id: Int!
-  name: String!
+  username: String!
   email: String!
   password: String!
+  roleId: Int
+  is_active: Boolean!
+  is_deleted: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
