@@ -5,7 +5,6 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { loadSchemaSync } from "@graphql-tools/load";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 
-import { BookResolver } from "./books/book.resolver";
 import { UserResolver } from "./user/user.resolver";
 
 const typeDefs = loadSchemaSync("./**/*.graphql", {
@@ -14,7 +13,7 @@ const typeDefs = loadSchemaSync("./**/*.graphql", {
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers: [BookResolver, UserResolver],
+  resolvers: [UserResolver],
 });
 
 export const apolloServer = new ApolloServer({

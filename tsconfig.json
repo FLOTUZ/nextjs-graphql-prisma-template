@@ -22,6 +22,7 @@
       "@/layouts/*": ["components/layouts/*"],
       "@models": ["graphql/models"],
       "@services": ["services/index"],
+      "@graphql": ["graphql/index"],
     },
     "experimentalDecorators": true
   },
